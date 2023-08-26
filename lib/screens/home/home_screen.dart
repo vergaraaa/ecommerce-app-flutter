@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce/models/category_model.dart';
 import 'package:ecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -15,11 +17,23 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(
+    return Scaffold(
+      appBar: const CustomAppBar(
         title: "Zero to Unicorn",
       ),
       bottomNavigationBar: CustomNavbar(),
+      body: CarouselSlider(
+        options: CarouselOptions(
+          aspectRatio: 1.5,
+          viewportFraction: 0.9,
+          enlargeCenterPage: true,
+          enlargeStrategy: CenterPageEnlargeStrategy.height,
+          // enableInfiniteScroll: false,
+        ),
+        items: Category.categories
+            .map((category) => HeroCarouselCard(category: category))
+            .toList(),
+      ),
     );
   }
 }
