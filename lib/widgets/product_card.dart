@@ -7,10 +7,14 @@ class ProductCard extends StatelessWidget {
     super.key,
     required this.product,
     this.widthFactor = 2.5,
+    this.leftPosition = 5,
+    this.isWishlist = false,
   });
 
   final Product product;
   final double widthFactor;
+  final double leftPosition;
+  final bool isWishlist;
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +38,18 @@ class ProductCard extends StatelessWidget {
           ),
           Positioned(
             top: 60,
+            left: leftPosition,
             child: Container(
-              width: widthValue,
+              width: widthValue - 10,
               height: 80,
               decoration: BoxDecoration(color: Colors.black.withAlpha(50)),
             ),
           ),
           Positioned(
             top: 65,
-            left: 5,
+            left: leftPosition + 5,
             child: Container(
-              width: widthValue - 10,
+              width: widthValue - 10 - leftPosition,
               height: 70,
               decoration: const BoxDecoration(color: Colors.black),
               child: Padding(
@@ -82,7 +87,18 @@ class ProductCard extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                    )
+                    ),
+                    isWishlist
+                        ? Expanded(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        : const SizedBox(),
                   ],
                 ),
               ),
