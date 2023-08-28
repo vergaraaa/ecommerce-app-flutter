@@ -43,12 +43,10 @@ TextTheme textTheme() {
     bodyLarge: TextStyle(
       color: Colors.black,
       fontSize: 10,
-      fontWeight: FontWeight.bold,
     ),
     bodyMedium: TextStyle(
       color: Colors.black,
       fontSize: 8,
-      fontWeight: FontWeight.bold,
     ),
   );
 }
